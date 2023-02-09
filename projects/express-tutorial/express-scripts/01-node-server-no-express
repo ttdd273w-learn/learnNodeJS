@@ -1,0 +1,42 @@
+const http = require("http");
+
+const { readFileSync } = require("fs");
+
+const homePage = readFileSync("./navbar-app/index.html");
+const homeStyles = readFileSync("./navbar-app/styles.css");
+const homeImage = readFileSync("./navbar-app/logo.svg");
+const homeLogic = readFileSync("./navbar-app/browser-app.js");
+
+const server = http.createServer((req, res) => {
+  // first parameter is the request, and the second is the response
+  // if you use text/plain, it will be treated as actual plain text
+  //   console.log(req);
+  url = req.url;
+  if (url == "/") {
+    res.writeHead(200, { "content-type": "text/html" });
+    // console.log("user hit the server");
+    res.end(homePage);
+  } else if (url === "/about") {
+    res.writeHead(200, { "content-type": "text/html" });
+    // console.log("user hit the server");
+    res.end("<h1>home page</h1>");
+  } else if (url === "/styles.css") {
+    res.writeHead(200, { "content-type": "text/css" });
+    // console.log("user hit the server");
+    res.end(homeStyles);
+  } else if (url === "/logo.svg") {
+    res.writeHead(200, { "content-type": "image/svg+xml" });
+    // console.log("user hit the server");
+    res.end(homeImage);
+  } else if (url === "/browser-app.js") {
+    res.writeHead(200, { "content-type": "text/javascript" });
+    // console.log("user hit the server");
+    res.end(homeLogic);
+  } else {
+    res.writeHead(404, { "content-type": "text/html" });
+    // console.log("user hit the server");
+    res.end("<h1>page not found</h1>");
+  }
+});
+
+server.listen(5000);

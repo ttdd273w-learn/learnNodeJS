@@ -1,0 +1,18 @@
+const path = require("path");
+
+// system specific separator
+console.log(path.sep);
+
+const filePath = path.join("/content/", "subfolder", "test.txt");
+
+console.log(filePath);
+
+// lowest level in the path, usually file name
+const base = path.basename(filePath);
+console.log(base);
+
+// pass in the global dirname
+const absolute = path.resolve(__dirname, "content", "subfolder", "test.txt");
+console.log(absolute);
+
+

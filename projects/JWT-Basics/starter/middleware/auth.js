@@ -1,0 +1,26 @@
+const jwt = require("jsonwebtoken");
+const { UnathenticatedError } = require("../errors");
+
+const authenticationMiddleware = async (req, res, next) => {
+  const authHeader = req.headers.authorization;
+  if (!authHeader || !authHeader.startsWith("Bearer")) {
+    throw new UnathenticatedError("No token provided");
+    // throw new CustomAPIError(
+    //   `No token provided/Invalid Credentials to Access This Route`,
+    //   401
+    // );
+  }
+  const token = authHeader.split(" ")[1];
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const { id, username } = decoded;
+    req.user = { id, username };
+    next();
+  } catch (error) {
+    // throw new CustomAPIError("Not authorized to access this route", 401);
+    throw new UnathenticatedError("Not authorized to access this route");
+  }
+};
+
+module.exports = authenticationMiddleware;

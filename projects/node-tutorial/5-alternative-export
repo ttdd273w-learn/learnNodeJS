@@ -1,0 +1,6 @@
+const items = ["item 1", "item 2"];
+
+const person = { name: "bob" };
+
+// module.exports is an object
+module.exports.singlePerson = person;
