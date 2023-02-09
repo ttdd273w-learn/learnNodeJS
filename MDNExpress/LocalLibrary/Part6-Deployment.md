@@ -424,19 +424,33 @@ git push origin main
 - Next we'll setup Railway to deploy our library from Github.
 - First choose the **Dashboard** option from the site top menu, then select the **New Project** button:
 
+![new_project_button](./../../assets/railway_new_project_button.png)
+
 - Railway will display a list of options for the new project, including the option to deploy a project from a template that is first created in your Github account, and a number of databases. Select **Deploy from GitHub repo**.
+
+![new_project](../../assets/railway_new_project_button_deploy_github_repo.png)
 
 - All projects in the Github repos you shared with Railway during setup are displayed.
 - Select your Github repository for the local library: `<user-name>/django-locallibrary-tutorial`.
 
+![select_repo](../../assets/railway_new_project_button_deploy_github_selectrepo.png)
+
 - Confirm your deployment by selecting **Deploy Now**.
+
+![deploy_now](../../assets/railway_new_project_deploy_confirm.png)
 
 - Railway will then load and deploy your project, displaying progress on the deployments tab.
 - When deployment successfully completes, you'll see a screen like the one below.
 
+![project_deploy](../../assets/railway_project_deploy.png)
+
 - Now select the _Settings_ tab, then scroll down to the Domains section, and press the **Generate Domain** button.
 
+![generate_domain](../../assets/railway_project_generate_domain.png)
+
 - This will publish the site and put the domain in place of the button, as shown below.
+
+![project_domain](../../assets/railway_project_domain.png)
 
 - Select the domain URL to open your library application.
 - Note that because we haven't specified a production database, the local library will open using your development data.
